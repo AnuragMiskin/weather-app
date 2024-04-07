@@ -41,37 +41,37 @@
       <div class="day-card">
         <img src="/cloud.svg" class="weather-icon">
         <div class="day-card-day">Monday</div>
-        <span>32&deg;</span>
+        <div><span>32&deg;</span></div>
       </div>
       <div class="day-card">
         <img src="/cloud.svg" class="weather-icon">
         <div class="day-card-day">tuesday</div>
-        <span>32&deg;</span>
+        <div><span>32&deg;</span></div>
       </div>
       <div class="day-card">
         <img src="/cloud.svg" class="weather-icon">
         <div class="day-card-day">wednesday</div>
-        <span>32&deg;</span>
+        <div><span>32&deg;</span></div>
       </div>
       <div class="day-card">
         <img src="/cloud.svg" class="weather-icon">
         <div class="day-card-day">Thursday</div>
-        <span>32&deg;</span>
+        <div><span>32&deg;</span></div>
       </div>
       <div class="day-card">
         <img src="/cloud.svg" class="weather-icon">
         <div class="day-card-day">Friday</div>
-        <span>32&deg;</span>
+        <div><span>32&deg;</span></div>
       </div>
       <div class="day-card">
         <img src="/cloud.svg" class="weather-icon">
         <div class="day-card-day">saturday</div>
-        <span>32&deg;</span>
+        <div><span>32&deg;</span></div>
       </div>
       <div class="day-card">
         <img src="/cloud.svg" class="weather-icon">
         <div class="day-card-day">sunday</div>
-        <span>32&deg;</span>
+        <div><span>32&deg;</span></div>
       </div>
     </section>
 
@@ -359,6 +359,51 @@
         </tr>
       </tbody>
     </table>
+
+    <template id="day-card-template">
+      <div class="day-card">
+        <img data-icon class="weather-icon">
+        <div data-date class="day-card-day"></div>
+        <div><span data-temp></span><span>&deg;</span></div>
+      </div>
+    </template>
+    <template id="hour-row-template">
+      <tr class="hour-row">
+        <td>
+         <div class="info-group">
+           <div data-day class="label"></div>
+           <div data-time></div>
+         </div>
+        </td>
+        <td>
+         <img data-icon class="weather-icon">
+        </td>
+        <td>
+         <div class="info-group">
+           <div class="label">Temp</div>
+           <div><span data-temp></span><span>&deg;</span></div>
+         </div>
+        </td>
+        <td>
+         <div class="info-group">
+           <div class="label">fl temp</div>
+           <div><span data-fl-temp></span><span>&deg;</span></div>
+         </div>
+        </td>
+        <td>
+         <div class="info-group">
+           <div class="label">wind</div>
+           <div><span data-wind></span><span class="sub-info">mph</span></div>
+         </div>
+        </td>
+        <td>
+         <div class="info-group">
+           <div class="label">precip</div>
+           <div><span data-precip></span><span class="sub-info">in</span></div>
+         </div>
+        </td>
+     </tr>
+    </template>
     <script type="module" src="/main.js"></script>
   </body>
-</html>
+  </html>
