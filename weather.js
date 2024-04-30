@@ -8,7 +8,7 @@ export function getWeather(lat,lon,timezone){
             longitude:lon,
             timezone,
         },
-    }).then((data)=>{
+    }).then(({data})=>{
         return{
             current: parsecurrentweather(data),
             // daily:parsedailyweather(data),
