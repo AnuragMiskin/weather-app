@@ -11,7 +11,7 @@ getWeather(10,10,Intl.DateTimeFormat().resolvedOptions().timeZone).then(renderwe
 function renderweather({current,daily,hourly}){
     renderCurrentWeather(current)
     renderDailyWeather(daily)
-    // renderHourlyWeather(hourly)
+    renderHourlyWeather(hourly)
     document.body.classList.remove("blurred")
 }
 function setvalue(selector, value, { parent = document } = {}) {
@@ -58,6 +58,19 @@ function renderDailyWeather(daily){
         dailysection.append(element);
     });
 }
-
+const hourlysection=document.querySelector("[data-hour-section]")
+const hourtemplate=document.getElementById("hour-row-template")
+function renderHourlyWeather(hourly){
+    hourlysection.innerHTML=""
+    hourly.forEach(hour=>{
+        const element=hourtemplate.content.cloneNode(true)
+        setvalue("temp",hour.temp,{parent:element})
+        setvalue("fl-temp",hour.feelslike,{parent:element})
+        setvalue("wind",hour.windSpeed,{parent:element})
+        setvalue("precip",hour.precip,{parent:element})
+        element.querySelector("[data-icon]").src=getIconUrl(hour.iconcode)
+        hourlysection.append(element)
+    })
+}
 
 
