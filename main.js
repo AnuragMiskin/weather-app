@@ -62,8 +62,17 @@ const hourlysection=document.querySelector("[data-hour-section]")
 const hourtemplate=document.getElementById("hour-row-template")
 function renderHourlyWeather(hourly){
     hourlysection.innerHTML=""
-    hourly.forEach(hour=>{
-        const element=hourtemplate.content.cloneNode(true)
+    const selecteddata=hourly.slice(0,24)
+    selecteddata.forEach(hour=>{
+        const element = hourtemplate.content.cloneNode(true);
+        const [datePart, timePart] = hour.timestamp.split('T');
+        const dayOfWeek = Day_formatter.format(new Date(datePart)); // Extract day of the week
+        const time = timePart.slice(0, 5); // Extract time HH:MM
+        
+        // Set the values in the element
+        setvalue("day", dayOfWeek, { parent: element });
+        setvalue("time", time, { parent: element });
+
         setvalue("temp",hour.temp,{parent:element})
         setvalue("fl-temp",hour.feelslike,{parent:element})
         setvalue("wind",hour.windSpeed,{parent:element})
@@ -74,3 +83,7 @@ function renderHourlyWeather(hourly){
 }
 
 
+// const dayOfWeek = Day_formatter.format(date);
+//         const time = hour.timestamp.split('T')[1].slice(0, 5); // Extracts "HH:MM"
+
+        // Set the time in the element
