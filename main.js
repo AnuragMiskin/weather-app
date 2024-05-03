@@ -5,7 +5,7 @@ import { ICON_MAP } from "./iconMap";
 navigator.geolocation.getCurrentPosition(positionsuccess,positionerror)
 
 function positionsuccess({coords}){
-    getWeather(coords.latitute,coords.longitude,Intl.DateTimeFormat().resolvedOptions().timeZone)
+    getWeather(coords.latitude,coords.longitude,Intl.DateTimeFormat().resolvedOptions().timeZone)
     .then(renderweather)
     .catch(e=>{
     console.error(e),
