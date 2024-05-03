@@ -2,11 +2,20 @@ import "./style.css";
 import { getWeather } from "./weather";
 import { ICON_MAP } from "./iconMap";
 
-getWeather(10,10,Intl.DateTimeFormat().resolvedOptions().timeZone).then(renderweather)
-.catch(e=>{
+navigator.geolocation.getCurrentPosition(positionsuccess,positionerror)
+
+function positionsuccess({coords}){
+    getWeather(coords.latitute,coords.longitude,Intl.DateTimeFormat().resolvedOptions().timeZone)
+    .then(renderweather)
+    .catch(e=>{
     console.error(e),
     alert("Error getting weather")
 })
+}
+
+function positionerror(){
+    alert("there was an error getting your location")
+}
 
 function renderweather({current,daily,hourly}){
     renderCurrentWeather(current)
@@ -83,7 +92,4 @@ function renderHourlyWeather(hourly){
 }
 
 
-// const dayOfWeek = Day_formatter.format(date);
-//         const time = hour.timestamp.split('T')[1].slice(0, 5); // Extracts "HH:MM"
 
-        // Set the time in the element
